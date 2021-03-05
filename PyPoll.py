@@ -2,18 +2,19 @@
 import os
 import csv
 
-# opening files
-
 # make it os independent 
 # input file
 file_to_load = os.path.join("resources","election_results.csv")
-# file we are writing results to
+# output file
 file_to_save = os.path.join("analysis","election_analysis.txt")
 
-# initialize the counter, candidate list, votes dictionary
+# initialize the counter, candidate list, votes dictionary, winning results
 total_votes = 0
 candidate_options = []
 candidate_votes = {}
+winning_candidate = ''
+winning_count = 0
+winning_percentage = 0
 
 # open the input file
 with open(file_to_load) as election_data:
@@ -30,16 +31,24 @@ with open(file_to_load) as election_data:
         
        candidate_votes[candidate_name] += 1
 
-#for thief in candidate_options:
-for thief in candidate_votes:
-    print (f"{thief}: received {(candidate_votes[thief] / total_votes):.1%} of the vote.")  
+# Loop through the vote to calculate percentage and the winner
+for candidate_name in candidate_votes:
+    votes = candidate_votes[candidate_name]    
+    vote_percentage = 100 * candidate_votes[candidate_name] / total_votes
+    # print the election results
+    print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,}) \n")
+    # determine the winner based on votes and percentage
+    if (votes > winning_count) and (vote_percentage > winning_percentage):
+        winning_count = votes
+        winning_percentage = vote_percentage
+        winning_candidate = candidate_name
 
-# print(total_votes)
-# print(candidate_options)
-# print(candidate_votes)
-# with open(file_to_save,'w') as txt_file:
-# some practice code from before...
-    # write some data
-    # txt_file.write("Hello World")
-    # txt_file.write("Counties in the Election\n------------------------\n")
-    # txt_file.write("Arapahoe\nDenver\nJefferson")
+winning_candidate_summary = (
+    f"-------------------------\n"
+    f"Winner: {winning_candidate}\n"
+    f"Winning Vote Count: {winning_count:,}\n"
+    f"Winning Percentage: {winning_percentage:.1f}%\n"
+    f"-------------------------\n"
+)
+print(winning_candidate_summary)
+
