@@ -6,7 +6,7 @@ import csv
 # input file
 file_to_load = os.path.join("resources","election_results.csv")
 # output file
-file_to_save = os.path.join("analysis","election_analysis.txt")
+file_to_save = os.path.join("analysis","election_results.txt")
 
 # initialize counters, candidate and county list, votes dictionary, winning results
 total_votes = 0
