@@ -31,7 +31,7 @@ The results of the audit are:
     * **Diana DeGette** who received 73.8% of the vote and 272,892 votes
 
 The audit results are also available here:
-* [Audit Results](https://github.com/goldbala55/Election_Analysis/tree/main/analysis/election_analysis.txt)
+* [Audit Results](https://github.com/goldbala55/Election_Analysis/blob/main/analysis/election_results.txt)
 
 ## Post-Audit Summary
 This election audit tool was written for reusability and can be run against any election results using the same feed input format. However, with some additional details in the input feed, further enhancements can be made to provide:
